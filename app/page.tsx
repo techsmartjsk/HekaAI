@@ -1,5 +1,6 @@
 import HeroSection from "./components/heroSection";
 import FeaturesSection from "./components/featuresSection";
+import CallTranscriptSection from "./components/callTranscriptSection";
 import HowItWorksSection from "./components/howItWorksSection";
 import DemoSection from "./components/demoSection";
 import FaqSection from "./components/faqSection";
@@ -36,6 +37,9 @@ export default function Home() {
         </section>
         <section id="features">
           <FeaturesSection />
+        </section>
+        <section id="call-transcript">
+          <CallTranscriptSection />
         </section>
         <section id="how-it-works">
           <HowItWorksSection />

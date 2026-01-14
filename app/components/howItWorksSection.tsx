@@ -60,11 +60,9 @@ export default function HowItWorksSection() {
                 <div className="w-24 h-24 md:w-28 md:h-28 bg-purple-600 rounded-2xl flex items-center justify-center shadow-lg">
                   {step.icon}
                 </div>
-                <span className="absolute -top-2 -right-2 text-2xl font-light text-gray-400">{index + 1}</span>
               </div>
               <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-3">{step.title}</h3>
               <p className="text-gray-600 leading-relaxed px-4">{step.body}</p>
-              {index < 2 && <div className="hidden md:block absolute top-12 left-[calc(50%+60px)] right-0 h-0.5 bg-gray-200"></div>}
             </div>
             </FadeInSection>
           ))}

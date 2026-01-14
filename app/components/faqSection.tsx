@@ -44,10 +44,10 @@ export default function FaqSection() {
       <section className="py-20 px-6 lg:px-8">
       <div className="max-w-4xl mx-auto rounded-[32px] bg-white/90 [backdrop-filter:blur(28px)] p-10 transition-all duration-500 ease-out">
         <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg md:text-xl text-gray-600">Everything you need to know about Heka</p>
+          <p className="text-lg text-gray-600">Everything you need to know about Heka</p>
         </div>
 
         <div className="space-y-4">

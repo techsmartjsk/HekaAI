@@ -18,12 +18,12 @@ export default function HeroSection() {
             Heka answers calls, qualifies the caller, books appointments automatically—then sends a transcript, summary, and CRM update in seconds.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-purple-700 text-white px-8 py-4 rounded-full text-lg hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg shadow-purple-500/30 cursor-pointer">
+            <a href="#demo" className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-purple-700 text-white px-8 py-4 rounded-full text-lg hover:from-purple-700 hover:to-purple-800 transition-all shadow-lg shadow-purple-500/30 cursor-pointer">
               Talk to Heka
-            </button>
-            <button className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full text-lg border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all cursor-pointer">
+            </a>
+            <a href="#demo" className="w-full sm:w-auto bg-white text-black px-8 py-4 rounded-full text-lg border-2 border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all cursor-pointer text-center inline-block">
               Book a 15-min Demo
-            </button>
+            </a>
           </div>
         </div>
       </div>
