@@ -8,7 +8,6 @@ export default function CallTranscriptSection() {
   const [callProgress, setCallProgress] = useState(0);
 
   useEffect(() => {
-    // Simulate call progress
     const timer = setTimeout(() => {
       setCallProgress(100);
       setTimeout(() => setShowTranscript(true), 500);
@@ -31,7 +30,6 @@ export default function CallTranscriptSection() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Call Side */}
             <div className="bg-white rounded-2xl p-6 lg:p-8">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
@@ -106,7 +104,6 @@ export default function CallTranscriptSection() {
               )}
             </div>
 
-            {/* Transcript Side */}
             <div className="bg-white rounded-2xl p-6 lg:p-8">
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-bold text-gray-800">Generated Transcript</h3>

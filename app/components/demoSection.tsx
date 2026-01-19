@@ -5,14 +5,12 @@ import FadeInSection from "./fadeInSection";
 
 export default function DemoSection() {
   useEffect(() => {
-    // Load Calendly script
     const script = document.createElement("script");
     script.src = "https://assets.calendly.com/assets/external/widget.js";
     script.async = true;
     document.body.appendChild(script);
 
     return () => {
-      // Cleanup script on unmount
       if (document.body.contains(script)) {
         document.body.removeChild(script);
       }
