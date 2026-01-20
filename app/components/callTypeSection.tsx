@@ -27,28 +27,28 @@ export default function CallTypeSection() {
   return (
     <FadeInSection>
       <section className="py-5 lg:py-20 px-4 lg:px-8">
-      <div className="max-w-7xl mx-auto rounded-[32px] p-12 space-y-12 transition-all duration-500 ease-out">
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">Built for Every Call Type</h2>
-          <p className="text-lg md:text-xl text-gray-600">From reception to sales to support—Heka handles it all</p>
+        <div className="max-w-7xl mx-auto rounded-[32px] p-12 transition-all duration-500 ease-out">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Built for Every Call Type</h2>
+            <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">From reception to sales to support—Heka handles it all</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {cards.map((card, index) => (
+              <FadeInSection key={card.title} delay={index * 0.1} className="h-full">
+                <div className="group bg-white rounded-2xl p-8 h-full border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className={`w-14 h-14 bg-gradient-to-br ${card.color} rounded-xl flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform duration-300`}>
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d={card.iconPath} />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-800 mb-3">{card.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">{card.body}</p>
+                </div>
+              </FadeInSection>
+            ))}
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {cards.map((card, index) => (
-            <FadeInSection key={card.title} delay={index * 0.1}>
-              <div className="bg-white rounded-2xl p-6">
-              <div className={`w-16 h-16 bg-gradient-to-br ${card.color} rounded-2xl flex items-center justify-center mb-4 transition-all duration-300`}>
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d={card.iconPath} />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-gray-800 mb-3">{card.title}</h3>
-              <p className="text-gray-600 leading-relaxed mb-4">{card.body}</p>
-            </div>
-            </FadeInSection>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
     </FadeInSection>
   );
 }

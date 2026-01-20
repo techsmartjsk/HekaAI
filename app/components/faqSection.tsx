@@ -41,51 +41,52 @@ export default function FaqSection() {
 
   return (
     <FadeInSection>
-      <section className="py-20 px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto rounded-[32px] bg-white/90 [backdrop-filter:blur(28px)] p-10 transition-all duration-500 ease-out">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-lg text-gray-600">Everything you need to know about Heka</p>
-        </div>
+      <section className="py-20 lg:py-32 px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-slate-600">Everything you need to know about Heka</p>
+          </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={faq.question}
-              className="border border-transparent rounded-2xl overflow-hidden transition-all duration-300"
-            >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
-              >
-                <span className="text-lg text-gray-800 pr-8">{faq.question}</span>
-                <svg
-                  className={`w-5 h-5 text-gray-600 flex-shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
               <div
-                className={`overflow-hidden transition-[max-height,opacity] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                  openIndex === index
-                    ? "max-h-[500px] opacity-100"
-                    : "max-h-0 opacity-0"
-                }`}
+                key={faq.question}
+                className={`border rounded-2xl transition-all duration-300 overflow-hidden ${openIndex === index ? "bg-white border-purple-100 shadow-md" : "bg-white border-slate-200 hover:border-slate-300"
+                  }`}
               >
-                <div className="px-6 pb-5 text-gray-600 leading-relaxed pt-2">{faq.answer}</div>
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full px-6 py-5 text-left flex items-center justify-between cursor-pointer"
+                >
+                  <span className={`text-lg font-medium pr-8 ${openIndex === index ? "text-purple-900" : "text-slate-900"}`}>{faq.question}</span>
+                  <span className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${openIndex === index ? 'bg-purple-100 text-purple-600' : 'bg-slate-100 text-slate-500'}`}>
+                    <svg
+                      className={`w-5 h-5 transition-transform duration-300 ${openIndex === index ? "rotate-180" : ""
+                        }`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  className={`overflow-hidden transition-[max-height,opacity] duration-300 ease-in-out ${openIndex === index
+                      ? "max-h-[500px] opacity-100"
+                      : "max-h-0 opacity-0"
+                    }`}
+                >
+                  <div className="px-6 pb-6 text-slate-600 leading-relaxed pt-0">{faq.answer}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </FadeInSection>
   );
 }

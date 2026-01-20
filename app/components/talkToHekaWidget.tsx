@@ -374,58 +374,70 @@ export default function TalkToHekaWidget({ onClose, initialOpen = false }: TalkT
   return (
     <>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl p-6 max-w-2xl w-full relative shadow-2xl max-h-[90vh] flex flex-col">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md transition-all duration-300">
+          <div className="bg-white rounded-3xl p-8 max-w-2xl w-full relative shadow-2xl max-h-[90vh] flex flex-col border border-slate-200 animate-fade-in-up">
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors cursor-pointer z-10"
+              className="absolute top-6 right-6 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer bg-slate-50 p-2 rounded-full hover:bg-slate-100"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold text-slate-900 mb-2">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-purple-100/50 mb-4 text-purple-600">
+                <Mic className="w-6 h-6" />
+              </div>
+              <h2 className="text-2xl font-bold text-slate-900 mb-2 tracking-tight">
                 Talk to Heka AI
               </h2>
-              <p className="text-sm text-gray-600 mb-4">
-                Have a real-time conversation with our AI voice assistant
+              <p className="text-base text-slate-500 max-w-sm mx-auto">
+                Experience real-time voice AI. Ask questions, book appointments, or just chat.
               </p>
             </div>
 
             {!isConnected && isLoading ? (
-              <div className="flex flex-col items-center justify-center py-12">
-                <Loader2 className="w-12 h-12 text-purple-600 animate-spin mb-4" />
-                <p className="text-slate-900 font-medium">Connecting to Heka AI...</p>
-                <p className="text-sm text-gray-600 mt-2">Please wait a moment</p>
+              <div className="flex flex-col items-center justify-center py-16">
+                <div className="relative">
+                  <div className="w-16 h-16 border-4 border-purple-100 border-t-purple-600 rounded-full animate-spin"></div>
+                  <div className="absolute inset-0 flex items-center justify-center text-purple-600 font-bold text-xs">AI</div>
+                </div>
+                <p className="text-slate-900 font-medium mt-6">Connecting to Neural Engine...</p>
+                <p className="text-sm text-slate-500 mt-1">Establishing secure voice channel</p>
               </div>
             ) : isConnected ? (
               <div className="flex-1 flex flex-col min-h-0">
-                <div className="flex-1 flex flex-col items-center justify-center p-8">
-                  <div className="mb-8">
+                <div className="flex-1 flex flex-col items-center justify-center p-4 py-8">
+                  <div className="mb-10 relative">
                     {isSpeaking ? (
                       <div className="relative">
-                        <div className="w-24 h-24 bg-purple-600 rounded-full flex items-center justify-center animate-pulse">
-                          <MessageSquare className="w-12 h-12 text-white" />
+                        <div className="w-32 h-32 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center animate-pulse shadow-xl shadow-purple-200">
+                          <MessageSquare className="w-14 h-14 text-white" />
                         </div>
-                        <div className="absolute inset-0 w-24 h-24 bg-purple-400 rounded-full animate-ping opacity-75"></div>
+                        <div className="absolute inset-0 w-32 h-32 bg-purple-400 rounded-full animate-ping opacity-20 duration-1000"></div>
+                        <div className="absolute -inset-4 w-40 h-40 bg-purple-200 rounded-full animate-pulse opacity-20 delay-100 -z-10"></div>
                       </div>
                     ) : (
-                      <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center">
-                        <MessageSquare className="w-12 h-12 text-gray-400" />
+                      <div className="w-32 h-32 bg-slate-100 rounded-full flex items-center justify-center shadow-inner border border-slate-200">
+                        <MessageSquare className="w-14 h-14 text-slate-400" />
                       </div>
                     )}
                   </div>
 
-                  <p className="text-lg font-medium text-slate-900 mb-8">
-                    {isSpeaking ? "AI is speaking..." : isRecording ? "Listening..." : "Press mic to speak"}
+                  <p className="text-xl font-medium text-slate-900 mb-8 text-center min-h-[2rem]">
+                    {isSpeaking ?
+                      <span className="animate-pulse">Speaking...</span> :
+                      isRecording ?
+                        <span className="text-red-500 flex items-center gap-2 justify-center"><span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span> Listening to you...</span> :
+                        "Tap the microphone to start"
+                    }
                   </p>
 
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-6">
                     <button
                       onClick={isRecording ? stopRecording : startRecording}
-                      className={`p-6 rounded-full transition-all shadow-lg ${isRecording
-                        ? "bg-red-500 hover:bg-red-600 text-white"
-                        : "bg-purple-600 hover:bg-purple-700 text-white"
+                      className={`h-20 w-20 flex items-center justify-center rounded-full transition-all shadow-xl hover:shadow-2xl hover:-translate-y-1 transform active:scale-95 ${isRecording
+                        ? "bg-red-500 hover:bg-red-600 text-white ring-4 ring-red-100"
+                        : "bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white ring-4 ring-purple-100"
                         } cursor-pointer`}
                       title={isRecording ? "Stop recording" : "Start recording"}
                     >
@@ -438,49 +450,47 @@ export default function TalkToHekaWidget({ onClose, initialOpen = false }: TalkT
 
                     <button
                       onClick={() => setShowTranscript(!showTranscript)}
-                      className="p-4 rounded-full bg-white border-2 border-gray-200 hover:border-purple-600 transition-all cursor-pointer"
+                      className={`h-14 w-14 flex items-center justify-center rounded-full border-2 transition-all cursor-pointer shadow-sm hover:shadow-md ${showTranscript
+                          ? "bg-slate-900 border-slate-900 text-white"
+                          : "bg-white border-slate-200 text-slate-600 hover:border-slate-300"
+                        }`}
                       title={showTranscript ? "Hide transcript" : "Show transcript"}
                     >
-                      <NotebookPen className="w-6 h-6 text-gray-600" />
+                      <NotebookPen className="w-6 h-6" />
                     </button>
                   </div>
 
-                  {isRecording && (
-                    <div className="flex items-center gap-2 text-red-500 mt-4">
-                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                      <span className="text-sm font-medium">Recording...</span>
-                    </div>
-                  )}
-
-                  <div className="mt-8 pt-6 border-t border-gray-200">
-                    <p className="text-sm text-gray-600 mb-3">
-                      Ready to automate your business calls?
+                  <div className="mt-12 w-full pt-8 border-t border-slate-100 text-center">
+                    <p className="text-sm text-slate-500 mb-4">
+                      Ready to deploy this for your business?
                     </p>
                     <a
                       href="https://app.hekaai.co"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-block w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 px-6 rounded-lg hover:from-purple-700 hover:to-purple-800 transition-all font-medium cursor-pointer text-center"
+                      className="inline-block w-full bg-slate-900 text-white py-3.5 px-6 rounded-xl hover:bg-slate-800 transition-all font-semibold cursor-pointer shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                     >
-                      Get Started Free →
+                      Get Started Free
                     </a>
                   </div>
                 </div>
 
                 {showTranscript && (
-                  <div className="border-t bg-gray-50 p-4 max-h-64 overflow-y-auto">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-sm font-medium text-slate-900">Transcript</h3>
+                  <div className="border-t border-slate-100 bg-slate-50/50 p-6 max-h-72 overflow-y-auto rounded-b-3xl">
+                    <div className="flex items-center justify-between mb-4 sticky top-0 bg-slate-50/95 backdrop-blur-sm py-2 z-10">
+                      <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Live Transcript</h3>
                       <button
                         onClick={() => setShowTranscript(false)}
-                        className="text-gray-400 hover:text-gray-600 cursor-pointer"
+                        className="text-slate-400 hover:text-slate-600 cursor-pointer text-xs font-medium"
                       >
-                        <X className="w-4 h-4" />
+                        CLOSE
                       </button>
                     </div>
-                    <div className="space-y-3">
+                    <div className="space-y-4">
                       {messages.length === 0 ? (
-                        <p className="text-sm text-gray-500 text-center py-4">No messages yet</p>
+                        <div className="text-center py-8">
+                          <p className="text-sm text-slate-400 italic">Conversation will appear here...</p>
+                        </div>
                       ) : (
                         messages.map((msg, idx) => (
                           <div
@@ -488,12 +498,12 @@ export default function TalkToHekaWidget({ onClose, initialOpen = false }: TalkT
                             className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                           >
                             <div
-                              className={`max-w-[80%] rounded-lg p-2 ${msg.role === "user"
-                                ? "bg-purple-600 text-white"
-                                : "bg-white text-slate-900 border border-gray-200"
+                              className={`max-w-[85%] rounded-2xl p-3.5 text-sm leading-relaxed shadow-sm ${msg.role === "user"
+                                ? "bg-purple-600 text-white rounded-tr-sm"
+                                : "bg-white text-slate-800 border border-slate-200 rounded-tl-sm"
                                 }`}
                             >
-                              <p className="text-xs">{msg.content}</p>
+                              <p>{msg.content}</p>
                             </div>
                           </div>
                         ))

@@ -6,7 +6,7 @@ export default function OutcomesSection() {
   const cards = [
     {
       title: "Stop losing leads",
-      body: "Heka answers instantly—24/7— and captures every opportunity.",
+      body: "Heka answers instantly 24/7  and captures every opportunity.",
       color: "bg-purple-600",
       icon: (
         <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
@@ -49,26 +49,40 @@ export default function OutcomesSection() {
   return (
     <FadeInSection>
       <section className="py-10 lg:py-20 px-2 lg:px-8">
-      <div className="max-w-7xl mx-auto rounded-[32px] [backdrop-filter:blur(30px)] p-12 space-y-12 transition-all duration-500 ease-out">
-        <div className="text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-800 mb-4">Outcomes That Matter</h2>
-          <p className="text-lg md:text-xl text-gray-500">Focus on results, not features.</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 md:mb-24">
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6 tracking-tight">Outcomes that matter</h2>
+            <p className="text-xl text-slate-500 max-w-2xl mx-auto">Focus on results, not features. We handle the noise so you can grow.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {cards.map((card, index) => (
+              <FadeInSection key={card.title} delay={index * 0.1} className="h-full">
+                <div className="group h-full bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  <div className={`w-14 h-14 ${card.color.replace('bg-', 'bg-opacity-10 text-')} ${card.color.replace('bg-', 'text-')} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    {/* We need to adjust the icon color logic or props since I'm changing the class usage */}
+                    <div className={`${card.color} w-full h-full absolute opacity-10 rounded-xl`}></div>
+                    {/* Re-using the icon but ensuring it renders correctly with new styling strategy. 
+                    Actually, let's just use the original icon logic slightly modified. 
+                    The original `card.icon` has `text-white` hardcoded. I should probably replace the icon SVG content or classes.
+                    However, `card.icon` is a ReactNode in the array. 
+                    Let's update the array definition instead to be cleaner? 
+                    Or just wrap it. The original icon has `text-white`. 
+                    If I want colored icons on light bg, I need to change the icon definition.
+                    
+                    Let's stick to the colored square for now but make it nicer.
+                 */}
+                    <div className={`${card.color} w-14 h-14 rounded-xl flex items-center justify-center shadow-md`}>
+                      {card.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 mb-3">{card.title}</h3>
+                  <p className="text-slate-600 leading-relaxed text-sm">{card.body}</p>
+                </div>
+              </FadeInSection>
+            ))}
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cards.map((card, index) => (
-            <FadeInSection key={card.title} delay={index * 0.1}>
-              <div className="bg-white rounded-3xl p-6 group">
-              <div className={`${card.color} w-16 h-16 rounded-2xl flex items-center justify-center mb-4`}>
-                {card.icon}
-              </div>
-              <h3 className="text-lg font-bold text-gray-800 mb-3">{card.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{card.body}</p>
-            </div>
-            </FadeInSection>
-          ))}
-        </div>
-      </div>
-    </section>
+      </section>
     </FadeInSection>
   );
 }
