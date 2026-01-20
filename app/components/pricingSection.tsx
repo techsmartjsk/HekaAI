@@ -23,7 +23,7 @@ const plans = [
     period: "/month",
     cta: "Start with Pro",
     features: [
-      "100 hours of free",
+      "300 minutes of free",
       "All analytics features",
       "Advanced scheduling",
       "CRM integrations",
