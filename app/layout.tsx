@@ -24,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Analytics />
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="acc3ef9b-aea6-4c5f-a565-86b95440564f"></script>
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
       </head>
       <body className={`${poppins.variable} antialiased`}>

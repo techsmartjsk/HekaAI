@@ -3,8 +3,14 @@
 import Header from "../components/header";
 import FadeInSection from "../components/fadeInSection";
 import Footer from "../components/footer";
+import { useEffect, useState } from "react";
 
 export default function PrivacyPolicy() {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     return (
         <div className="bg-[#fcfcff] min-h-screen flex flex-col">
             <Header />
@@ -13,7 +19,7 @@ export default function PrivacyPolicy() {
                 <FadeInSection>
                     <div className="max-w-3xl mx-auto">
                         <h1 className="text-4xl font-bold text-slate-900 mb-8">Privacy Policy</h1>
-                        <p className="text-slate-500 mb-8">Last Updated: {new Date().toLocaleDateString()}</p>
+                        <p className="text-slate-500 mb-8">Last Updated: {mounted ? new Date().toLocaleDateString() : ""}</p>
 
                         <div className="prose prose-slate max-w-none text-slate-600 space-y-8">
                             <section>
