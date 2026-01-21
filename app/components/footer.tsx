@@ -32,7 +32,25 @@ export default function Footer() {
             <p className="text-slate-500 text-sm">
               © {new Date().getFullYear()} Heka AI Inc. All rights reserved.
             </p>
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-6">
+              <a
+                href="/contact-us"
+                className="text-slate-500 hover:text-purple-600 text-sm transition-colors cursor-pointer"
+              >
+                Contact Us
+              </a>
+              <a
+                href="/shipping-policy"
+                className="text-slate-500 hover:text-purple-600 text-sm transition-colors cursor-pointer"
+              >
+                Shipping Policy
+              </a>
+              <a
+                href="/cancellation-and-refund"
+                className="text-slate-500 hover:text-purple-600 text-sm transition-colors cursor-pointer"
+              >
+                Cancellations & Refunds
+              </a>
               <a
                 href="/privacy-policy"
                 className="text-slate-500 hover:text-purple-600 text-sm transition-colors cursor-pointer"

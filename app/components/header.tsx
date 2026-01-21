@@ -33,6 +33,7 @@ export default function Header() {
                         <Link href="/#how-it-works" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">How It Works</Link>
                         <Link href="/#pricing" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Pricing</Link>
                         <Link href="/#faq" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">FAQ</Link>
+                        <Link href="/contact-us" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">Contact</Link>
                     </div>
                     <div className="flex items-center gap-4">
                         <a
@@ -114,6 +115,13 @@ export default function Header() {
                                 className="block py-3 px-4 text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors"
                             >
                                 FAQ
+                            </Link>
+                            <Link
+                                href="/contact-us"
+                                onClick={handleNavClick}
+                                className="block py-3 px-4 text-base font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 rounded-xl transition-colors"
+                            >
+                                Contact
                             </Link>
                         </nav>
 
